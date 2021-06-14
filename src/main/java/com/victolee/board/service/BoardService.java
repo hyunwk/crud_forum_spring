@@ -61,8 +61,23 @@ public class BoardService {
     }
 
     @Transactional
-    public List<BoardDto> searchPosts(String keyword) {
-        List<BoardEntity> boardEntities = boardRepository.findByTitleContaining(keyword);
+    public List<BoardDto> searchPosts(String Keyword) {
+        List<BoardEntity> boardEntities = boardRepository.findByTitleContaining(Keyword);
+        List<BoardDto> boardDtoList = new ArrayList<>();
+
+        if (boardEntities.isEmpty()) return boardDtoList;
+
+        for (BoardEntity boardEntity : boardEntities) {
+            boardDtoList.add(this.convertEntityToDto(boardEntity));
+        }
+
+        return boardDtoList;
+    }
+
+    // filter host
+    @Transactional
+    public List<BoardDto> filterPosts(String Keyword) {
+        List<BoardEntity> boardEntities = boardRepository.findByFilterContaining(Keyword);
         List<BoardDto> boardDtoList = new ArrayList<>();
 
         if (boardEntities.isEmpty()) return boardDtoList;

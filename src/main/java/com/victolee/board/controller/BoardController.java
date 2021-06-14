@@ -78,7 +78,15 @@ public class BoardController {
     @GetMapping("/board/search")
     public String search(@RequestParam(value="keyword") String keyword, Model model) {
         List<BoardDto> boardDtoList = boardService.searchPosts(keyword);
+        model.addAttribute("boardList", boardDtoList);
 
+        return "board/list.html";
+    }
+
+    @GetMapping("/board/filter")
+    public String filter(@RequestParam(value="keyword") String keyword, Model model) {
+        System.out.println(keyword);
+        List<BoardDto> boardDtoList = boardService.filterPosts(keyword);
         model.addAttribute("boardList", boardDtoList);
 
         return "board/list.html";

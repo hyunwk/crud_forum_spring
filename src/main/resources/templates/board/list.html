@@ -23,6 +23,15 @@
         <button>검색하기</button>
     </form>
     <br>
+    <ul>
+
+        <li><a th:href="@{/board/filter(keyword=intern)}">  인턴</a></li>
+        <li><a th:href="@{/board/filter(keyword=codingtest)}">  코딩테스트</a></li>
+        <li><a th:href="@{/board/filter(keyword=public)}">  공공기업</a></li>
+        <li><a th:href="@{/board/filter(keyword=private)}">  사기업</a></li>
+    </ul>
+
+    <br>
 
     <table>
         <tr>
