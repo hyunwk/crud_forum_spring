@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<!-- HEADER -->
+<div th:insert="common/header.html" id="header"></div>
+
 <form th:action="@{'/post/edit/' + ${boardDto.id}}" method="post">
     <input type="hidden" name="_method" value="put"/>
     <input type="hidden" name="id" th:value="${boardDto.id}"/>

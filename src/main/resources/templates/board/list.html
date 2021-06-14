@@ -11,8 +11,10 @@
     <div th:insert="common/header.html" id="header"></div>
 
     <a th:href="@{/post}">  글쓰기</a>
+    <br><br>
 
-    <!-- 검색 form -->
+
+ <!-- 검색 form -->
     <form action="/board/search" method="GET">
         <div>
             <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
@@ -20,6 +22,7 @@
 
         <button>검색하기</button>
     </form>
+    <br>
 
     <table>
         <tr>
@@ -50,14 +53,12 @@
         </tr>
         </tbody>
     </table>
-
+    <br>
     <div>
-        <span th:each="pageNum : ${pageList}" th:inline="text">
+        page : <span th:each="pageNum : ${pageList}" th:inline="text">
             <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
         </span>
     </div>
-
-    <hr>
 
 
 

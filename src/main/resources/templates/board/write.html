@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <form  action="/post" method="post">
-        제목 : <input type="text" name="title"> <br>
-        작성자 : <input type="text" name="writer"> <br>
-        <textarea name="content"></textarea><br>
 
+<!-- HEADER -->
+<div th:insert="common/header.html" id="header"></div>
+
+    <form  action="/post" method="post">
+        <table>
+            <tr>
+                <td>
+                    제목
+                </td>
+                <td>
+                    <input type="text" name="title">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    작성자
+                </td>
+                <td>
+                    <input type="text" name="writer">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   내용
+                </td>
+                <td>
+                    <textarea name="content"></textarea><br>
+                </td>
+            </tr>
+        </table>
         <input type="submit" value="등록">
     </form>
 </body>
