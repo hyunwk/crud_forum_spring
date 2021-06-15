@@ -19,7 +19,7 @@ import java.util.Optional;
 public class BoardService {
     private BoardRepository boardRepository;
 
-    private static final int BLOCK_PAGE_NUM_COUNT = 5;  // 블럭에 존재하는 페이지 번호 수
+    private static final int BLOCK_PAGE_NUM_COUNT = 3;  // 블럭에 존재하는 페이지 번호 수
     private static final int PAGE_POST_COUNT = 4;       // 한 페이지에 존재하는 게시글 수
 
     @Transactional
@@ -120,6 +120,7 @@ public class BoardService {
                 .title(boardEntity.getTitle())
                 .content(boardEntity.getContent())
                 .writer(boardEntity.getWriter())
+                .filter(boardEntity.getFilter())
                 .createdDate(boardEntity.getCreatedDate())
                 .build();
     }

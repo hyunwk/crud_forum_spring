@@ -15,16 +15,24 @@
     <!-- HEADER -->
     <div th:insert="common/header.html" id="header"></div>
 
-
-    <a th:href="@{/post}">  글쓰기</a>
-    <br><br>
- <!-- 검색 form -->
-    <form action="/board/search" method="GET">
-        <div>
-            <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
-        </div>
-        <button type="button" class="btn btn-primary">검색하기</button>
-    </form>
+<br><br><br><br>
+    <div class="container">
+        <form action="/board/search" method="GET">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-primary" th:href="@{/post}" role="button">글쓰기</a>
+                </div>
+                <div class="col-md-2">
+                    <input name="keyword" type="text" placeholder="검색어를 입력해주세요">
+                </div>
+                <div class="col-md-2">
+                    <input class="btn btn-primary" type="submit" value="검색하기">
+                </div>
+            </div>
+        </form>
+    </div>
     <br>
     <div class="container">
         <div class="row">
@@ -39,13 +47,16 @@
 
             </div>
             <div class="col-md-8">
-                <table>
-                    <tr>
-                        <th width="150" align="center" class="one wide">번호</th>
-                        <th width="150" align="center" class="ten wide">글제목</th>
-                        <th width="150" align="center" class="two wide">작성자</th>
-                        <th width="150" align="center" class="three wide">작성일</th>
-                    </tr>
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" width="150" align="center" class="one wide">번호</th>
+                            <th scope="col" width="150" align="center" class="ten wide">글제목</th>
+                            <th scope="col" width="150" align="center" class="two wide">작성자</th>
+                            <th scope="col" width="150" align="center" class="two wide">필터</th>
+                            <th scope="col" width="150" align="center" class="three wide">작성일</th>
+                        </tr>
+                    </thead>
 
                     <tbody>
                     <!-- CONTENTS !-->
@@ -62,8 +73,10 @@
                             <span th:text="${board.writer}"></span>
                         </td>
                         <td>
+                            <span th:text="${board.filter}"></span>
+                        </td>
+                        <td>
                             <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-
                         </td>
                     </tr>
                     </tbody>
@@ -82,7 +95,7 @@
             <div class="col-md-1">
                 <h4><span class="badge bg-secondary">Page</span></h4>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-3">
                 <span th:each="pageNum : ${pageList}" th:inline="text">
                     <button type="button" class="btn btn-light"><a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a></button>
                 </span>
