@@ -1,5 +1,4 @@
 package com.victolee.board.controller;
-
 import com.victolee.board.dto.BoardDto;
 import com.victolee.board.service.BoardService;
 import lombok.AllArgsConstructor;
@@ -36,7 +35,6 @@ public class BoardController {
         return "board/detail.html";
     }
 
-
     /* 게시글 쓰기 */
     @GetMapping("/post")
     public String write() {
@@ -46,10 +44,8 @@ public class BoardController {
     @PostMapping("/post")
     public String write(BoardDto boardDto) {
         boardService.savePost(boardDto);
-
         return "redirect:/";
     }
-
 
     /* 게시글 수정 */
     @GetMapping("/post/edit/{no}")
