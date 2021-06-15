@@ -75,12 +75,20 @@
    <br>
 
     <br>
-    <div>
-        page : <span th:each="pageNum : ${pageList}" th:inline="text">
-            <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
-        </span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-1">
+                <h4><span class="badge bg-secondary">Page</span></h4>
+            </div>
+            <div class="col-md-1">
+                <span th:each="pageNum : ${pageList}" th:inline="text">
+                    <button type="button" class="btn btn-light"><a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a></button>
+                </span>
+            </div>
+        </div>
     </div>
-
 
     <!-- FOOTER -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
