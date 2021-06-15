@@ -1,9 +1,10 @@
 package com.victolee.board.service;
 import com.victolee.board.domain.Member;
+import com.victolee.board.domain.repository.JpaMemberRepository;
+import com.victolee.board.domain.repository.MemberRepository;
 import com.victolee.board.domain.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -11,18 +12,13 @@ import java.util.regex.Pattern;
 
 @Service
 public class MemberService {
-    private MemberRepository memberRepository;
-//    private final MemberRepository memberRepository;
-////    public MemberService(MemberRepository memberRepository) {
-//        this.memberRepository = memberRepository;
-//    }
-
+    private JpaMemberRepository memberRepository;
     /*
     회원가입
     */
     public long join(Member member) {
         validateDuplicateMember(member);
-        validateFormatMember(member);
+        //validateFormatMember(member);
         memberRepository.save(member);
         return member.getId();
     }
