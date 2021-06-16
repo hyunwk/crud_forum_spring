@@ -1,37 +1,5 @@
-<!--<!DOCTYPE HTML>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--    <link rel="stylesheet" th:href="@{/css/board.css}">-->
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
-<!--    <title>Hello, world!</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="container">-->
-<!--    <form action="/members/login" method="post">-->
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td>이메일</td>-->
-<!--                <td><input type="text" id="email" name="email" placeholder="이메일을 입력하세요"></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>비밀번호</td>-->
-<!--                <td><input type="text" id="pw" name="pw" placeholder="비밀번호를 입력하세요"><td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--        <button type="submit">로그인</button>-->
-<!--    </form>-->
-<!--</div> &lt;!&ndash; /container &ndash;&gt;-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -124,6 +92,9 @@ body {
 </style>
 </head>
 <body>
+<!-- HEADER -->
+<div th:insert="common/header.html" id="header"></div>
+
 <div class="signup-form">
     <form action="/members/login" method="post">
         <h2>로그인</h2>

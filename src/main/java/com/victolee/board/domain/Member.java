@@ -5,10 +5,12 @@ import javax.persistence.*;
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id;
+    private Long id_member;
     @Column(name="name")
     private String name;
+    @Column(name="email")
     private String email;
+    @Column(name="pw")
     private String pw;
 
     public String getEmail() {
@@ -23,11 +25,11 @@ public class Member {
     }
     public void setPw(String pw) { this.pw = pw; }
 
-    public Long getId() {
-        return id;
+    public Long getId_member() {
+        return id_member;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long id_member) {
+        this.id_member = id_member;
     }
 
     public String getName() {

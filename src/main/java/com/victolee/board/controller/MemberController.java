@@ -2,7 +2,6 @@ package com.victolee.board.controller;
 import com.victolee.board.domain.Member;
 import com.victolee.board.service.MemberService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,14 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-//@AllArgsConstructor
+@AllArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
-    @Autowired
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
     /*
     회원가입
      */

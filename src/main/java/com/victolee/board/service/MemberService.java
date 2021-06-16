@@ -1,29 +1,33 @@
 package com.victolee.board.service;
 import com.victolee.board.domain.Member;
 import com.victolee.board.domain.repository.JpaMemberRepository;
-import com.victolee.board.domain.repository.MemberRepository;
-import com.victolee.board.domain.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
+@AllArgsConstructor
 public class MemberService {
-    private JpaMemberRepository memberRepository;
+    private final JpaMemberRepository memberRepository;
+
     /*
     회원가입
     */
+    @Transactional
     public long join(Member member) {
         validateDuplicateMember(member);
         //validateFormatMember(member);
         memberRepository.save(member);
-        return member.getId();
+        return member.getId_member();
     }
 
     //같은 이메일이 있는 중복회원 x
+    @Transactional
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())
                 .ifPresent(m -> {
@@ -32,6 +36,7 @@ public class MemberService {
     }
 
     //양식 검사
+    @Transactional
     private void validateFormatMember(Member member){
         if (! (isValidEmail(member.getEmail())
                 && isValidName(member.getName())
@@ -39,6 +44,7 @@ public class MemberService {
             throw new IllegalStateException("올바른 입력 형식이 아닙니다");
     }
 
+    @Transactional
     public static boolean isValidEmail(String email)
     {
         boolean err = false;
@@ -52,6 +58,7 @@ public class MemberService {
         return err;
     }
 
+    @Transactional
     public static boolean isValidName(String name)
     {
         boolean err = false;
@@ -64,6 +71,7 @@ public class MemberService {
         }
         return err;
     }
+    @Transactional
     public static boolean isValidPw(String pw)
     {
         boolean err = false;
@@ -76,10 +84,12 @@ public class MemberService {
         }
         return err;
     }
+    @Transactional
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
+    @Transactional
     public Optional<Member> findOne(Long memberId) {
         return memberRepository.findById(memberId);
     }
@@ -87,11 +97,13 @@ public class MemberService {
     /*
     로그인
      */
+    @Transactional
     public boolean login(Member member){
         return validateLoginMember(member).get().equals(member);
     }
 
     // 5.18 로그인 검증
+    @Transactional
     private Optional<Member> validateLoginMember(Member member) {
         memberRepository.checkPw(member.getEmail(), member.getPw())
                 .ifPresentOrElse(m -> System.out.println("로그인성공 :" +member.getEmail()),
