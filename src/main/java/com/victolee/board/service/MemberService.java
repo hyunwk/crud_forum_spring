@@ -105,10 +105,10 @@ public class MemberService {
     // 5.18 로그인 검증
     @Transactional
     private Optional<Member> validateLoginMember(Member member) {
-        memberRepository.checkPw(member.getEmail(), member.getPw())
-                .ifPresentOrElse(m -> System.out.println("로그인성공 :" +member.getEmail()),
-                        () -> {throw new IllegalStateException("회원 정보가 없습니다.");}
-                );
+//        memberRepository.checkPw(member.getEmail(), member.getPw())
+//                .ifPresentOrElse(m -> System.out.println("로그인성공 :" +member.getEmail()),
+//                        () -> {throw new IllegalStateException("회원 정보가 없습니다.");}
+//                );
         return Optional.ofNullable(member);
     }
 }

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="board:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/board_jar</output-path>
+    <root id="archive" name="board.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
