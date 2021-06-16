@@ -51,7 +51,7 @@ public class BoardController {
     @GetMapping("/post/edit/{no}")
     public String edit(@PathVariable("no") Long no, Model model) {
         BoardDto boardDTO = boardService.getPost(no);
-
+        delete(no);
         model.addAttribute("boardDto", boardDTO);
         return "board/update.html";
     }
